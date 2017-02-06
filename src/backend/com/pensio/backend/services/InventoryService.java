@@ -32,7 +32,6 @@ public class InventoryService {
         if(Objects.isNull(inventory)){
             return false;
         }
-        System.out.println("quantity = " + quantity+ " " + "qunatity = "+ inventory.getInventory());
         return quantity <= inventory.getInventory();
     }
 
@@ -59,10 +58,9 @@ public class InventoryService {
         if (Objects.isNull(inventory)) {
             return false;
         }
-
         // if the quantity of the product the customer would like to buy
         // is more than stored in the inventory, they wount be able to buy the product
-        if(inventory.getInventory() < quantity){
+        if(inventory.getInventory() <= 0 || inventory.getInventory() < quantity){
             return false;
         }
 

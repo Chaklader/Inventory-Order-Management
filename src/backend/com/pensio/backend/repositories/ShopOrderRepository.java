@@ -44,5 +44,4 @@ public class ShopOrderRepository {
     public void saveShopOrder(ShopOrder shopOrder) {
         System.out.println("Hurray, you saved the shopOrder: " + shopOrder);
     }
-
 }

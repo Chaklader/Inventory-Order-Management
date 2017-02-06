@@ -33,7 +33,6 @@ public class BackendControllerTests {
 		controller = new BackendController(shopOrderService);
 	}
 
-
 	// test the get method of the shop order service
 	@Test
 	public void captureReservationGetsTheOrderFromTheRepository()
