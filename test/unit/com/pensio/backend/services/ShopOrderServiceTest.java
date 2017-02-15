@@ -14,11 +14,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
 import java.util.UUID;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
 public class ShopOrderServiceTest {
 
@@ -75,8 +76,8 @@ public class ShopOrderServiceTest {
         shopOrder.setId(UUID.randomUUID().toString());
         shopOrder.setPaymentId(UUID.randomUUID().toString());
 
-        // need to explicitly set the boolean as true
-        // as the default value would be false
+        // need to explicitly set as true, as the default
+        // boolean field value of an object is false
         shopOrder.setCaptured(true);
 
         Product product = new Product();
@@ -148,8 +149,8 @@ public class ShopOrderServiceTest {
 
         shopOrder.setOrderLines(Arrays.asList(orderLine));
 
-        // we only check the payment if the inventory is sufficient
-        // hence, dont need to mock the MerchantApiService in this case
+        // dont need to mock the MerchantApiService in
+        // this case as the inventory is insufficient
         when(inventoryService.checkInventory(product, 1)).thenReturn(false);
 
         final ShopOrder actual = shopOrderService.capture(shopOrder);

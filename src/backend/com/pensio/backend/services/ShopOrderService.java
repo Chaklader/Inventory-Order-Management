@@ -53,7 +53,6 @@ public class ShopOrderService {
     public ShopOrder capture(ShopOrder shopOrder) {
 
         for (OrderLine orderLine : shopOrder.getOrderLines()) {
-
             if (!inventoryService.checkInventory(orderLine.getProduct(), orderLine.getQuantity())) {
                 shopOrder.release();
                 break;

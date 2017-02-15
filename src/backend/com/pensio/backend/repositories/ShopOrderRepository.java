@@ -1,14 +1,7 @@
 package com.pensio.backend.repositories;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.pensio.backend.exceptions.UnableToLoadPaymentIdForShopOrderException;
 import com.pensio.backend.model.IModelFactory;
 import com.pensio.backend.model.OrderLine;
 import com.pensio.backend.model.Product;

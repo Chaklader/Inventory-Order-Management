@@ -3,6 +3,8 @@ package com.pensio.backend.model;
 public class Inventory 
 {
 	private Product product;
+
+	// amount of the product in the stock
 	private int inventory;
 	
 	public Product getProduct() 

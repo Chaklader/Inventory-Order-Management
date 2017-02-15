@@ -11,6 +11,16 @@ import com.pensio.backend.repositories.ShopOrderRepository;
 import java.util.Arrays;
 import java.util.UUID;
 
+
+
+/* We are looking for people with a firm background in TDD using IoC. 
+
+1. In detail we expected tests to be introduced earlier in your checkins and we expected to 
+see the IoC container be used for class instantiation, not population.
+
+2. Some of your tests were also overly verbose and did not use the @Before method 
+to setup the base of the tests.*/
+
 public class BackendContainer implements IModelFactory {
 
     private ShopOrderRepository shopOrderRepository;
@@ -19,6 +29,7 @@ public class BackendContainer implements IModelFactory {
         return new BackendController(null);
     }
 
+
     /**
      * Instantiates a singleton ShopOrderRepository instance per BackendContainer instance
      *
@@ -26,6 +37,7 @@ public class BackendContainer implements IModelFactory {
      */
     public ShopOrderRepository getShopOrderRepository() {
 
+        // this if is good to improve the performance
         if (shopOrderRepository == null) {
             synchronized (ShopOrderRepository.class) {
                 if (shopOrderRepository == null) {

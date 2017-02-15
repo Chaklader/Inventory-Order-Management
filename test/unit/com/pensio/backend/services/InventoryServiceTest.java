@@ -25,6 +25,8 @@ public class InventoryServiceTest {
     private InventoryRepository inventoryRepo;
 
     private Inventory inventory;
+    private final int inventorySize = 10;
+    private final int inventorySizeChange = 5;
 
     private InventoryService inventoryService;
 
@@ -37,7 +39,7 @@ public class InventoryServiceTest {
         product.setName("Test product name");
 
         inventory = new Inventory();
-        inventory.setInventory(10);
+        inventory.setInventory(inventorySize);
         inventory.setProduct(product);
 
         when(inventoryRepo.load(product.getId())).thenReturn(inventory);
@@ -58,20 +60,20 @@ public class InventoryServiceTest {
 
     @Test
     public void test_checkInventory_ShouldReturnFalseWhenQuantityGreatherThanExistingInventory() {
-        boolean actual = inventoryService.checkInventory(inventory.getProduct(), inventory.getInventory() + 5);
+        boolean actual = inventoryService.checkInventory(inventory.getProduct(), inventory.getInventory() + inventorySizeChange);
         assertFalse(actual);
     }
 
     @Test
     public void test_takeFromInventory_ShouldReturnTrueWhenInventorySuccessfullySave() {
-        boolean actual = inventoryService.takeFromInventory(inventory.getProduct(), inventory.getInventory() - 5);
+        boolean actual = inventoryService.takeFromInventory(inventory.getProduct(), inventory.getInventory() - inventorySizeChange);
         assertTrue(actual);
     }
 
     // the inventory quantity (stock) is lesser than the product quantity customer would like to buy
     @Test
     public void test_takeFromInventory_ShouldReturnFalseWhenInventoryIsNotSuccessfullySave() {
-        boolean actual = inventoryService.takeFromInventory(inventory.getProduct(), inventory.getInventory() + 5);
+        boolean actual = inventoryService.takeFromInventory(inventory.getProduct(), inventory.getInventory() + inventorySizeChange);
         assertFalse(actual);
     }
 }
