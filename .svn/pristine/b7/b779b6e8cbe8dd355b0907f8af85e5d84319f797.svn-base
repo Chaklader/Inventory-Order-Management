@@ -1,0 +1,7 @@
+package com.pensio.backend.services;
+
+/**
+ * Created by Chaklader on 2/5/17.
+ */
+public class ShopOrderService {
+}

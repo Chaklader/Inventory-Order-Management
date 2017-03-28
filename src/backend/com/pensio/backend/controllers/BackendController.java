@@ -10,7 +10,30 @@ import com.pensio.backend.services.ShopOrderService;
 see the IoC container be used for class instantiation, not population.
 
 2. Some of your tests were also overly verbose and did not use the @Before method 
-to setup the base of the tests.*/
+to setup the base of the tests.
+
+In the BackendContainer code you wrote:
+
+    @Override
+    public Inventory getInventory() {
+        Inventory inventory = new Inventory();
+        inventory.setInventory(10);
+        inventory.setProduct(getProduct());
+        return inventory;
+    }
+
+    @Override
+    public OrderLine getOrderLine() {
+        OrderLine orderLine = new OrderLine();
+        orderLine.setProduct(getProduct());
+        orderLine.setQuantity(1);
+        return orderLine;
+    }
+
+This instantiates the objects, but also adds values (inventory on the Inventory object 
+and quantity on the OrderLine object). This increases the responsibility area of the container 
+outside of what is normally the responsibility area of the container.*/
+
 public class BackendController {
 
     private ShopOrderService shopOrderService;

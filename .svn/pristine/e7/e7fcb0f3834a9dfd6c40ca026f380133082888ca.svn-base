@@ -1,0 +1,33 @@
+package com.pensio.backend.controllers;
+
+import com.pensio.backend.model.ShopOrder;
+import com.pensio.backend.repositories.ShopOrderRepository;
+
+public class BackendController {
+	
+	private ShopOrderRepository shopOrderRepository;
+
+	public BackendController(ShopOrderRepository shopOrderRepository) 
+	{
+		this.shopOrderRepository = shopOrderRepository;
+	}
+
+	public void capturePayment(String shopOrderId) 
+	{
+		ShopOrder order = shopOrderRepository.loadShopOrder(shopOrderId);
+		
+		order.capture();
+		
+		// TODO: Save the model after capturing
+	}
+
+	public void releasePayment(String shopOrderId) 
+	{
+		ShopOrder order = null; // TODO: load the shop order  
+		
+		order.release();
+		
+		// TODO: Save the model after releasing
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.pensio.backend.services;
+
+import com.pensio.backend.model.ShopOrder;
+
+/**
+ * Created by Chaklader on 2/5/17.
+ */
+public class ShopOrderService {
+    public ShopOrder get(String shopOrderId) {
+        return null;
+    }
+
+    public void capture(ShopOrder shopOrder) {
+    }
+
+    public void release(ShopOrder shopOrder) {
+
+    }
+}
